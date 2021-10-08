@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 // Binary-search
 
@@ -23,6 +26,11 @@ func binarySearch(ss []int, x int) int {
 	right = len(ss) + 1
 	for left+1 < right { /* 0 ≤ left < right ≤ n + 1 and a[left] < x < a[right] */
 		middle := (left + right) / 2
+
+		if !found(ss, x) {
+			log.Fatal("index not found")
+		}
+
 		if ss[middle] == x {
 			return middle
 		} else if ss[middle] < x {
@@ -33,4 +41,13 @@ func binarySearch(ss []int, x int) int {
 	}
 
 	return -1
+}
+
+func found(ss []int, x int) bool  {
+	for _, v := range ss {
+		if v == x {
+			return true
+		}
+	}
+	return false
 }
