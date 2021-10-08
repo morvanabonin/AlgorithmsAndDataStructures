@@ -18,10 +18,11 @@ var (
 )
 
 func main() {
-	fmt.Println(binarySearch(sortedSlice, x))
+	ret := BinarySearch(sortedSlice, x)
+	fmt.Println(ret)
 }
 
-func binarySearch(ss []int, x int) int {
+func BinarySearch(ss []int, x int) int {
 	left = -1
 	right = len(ss) + 1
 	for left+1 < right { /* 0 ≤ left < right ≤ n + 1 and a[left] < x < a[right] */

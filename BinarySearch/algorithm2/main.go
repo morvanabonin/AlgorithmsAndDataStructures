@@ -13,17 +13,20 @@ import (
 // Algorithm based on article
 // https://levelup.gitconnected.com/binary-search-with-go-727b1943fd64
 // https://brilliant.org/wiki/binary-search/
-var sortedSlice = []int{2, 3, 5, 7, 11, 13, 16, 20, 21, 27}
-var x = 27
-var start = 0
-var end = len(sortedSlice)
+
+var (
+	sortedSlice = []int{2, 3, 5, 7, 11, 13, 16, 20, 21, 27}
+	x           = 27
+	start       = 0
+	end         = len(sortedSlice)
+)
 
 func main() {
-	ret := binarySearch(sortedSlice, x, start, end)
+	ret := BinarySearch(sortedSlice, x, start, end)
 	fmt.Println(ret)
 }
 
-func binarySearch(ss []int, x, s, e int) int {
+func BinarySearch(ss []int, x, s, e int) int {
 
 	// checking if s or e are lower than 0, case true
 	//  return -1
@@ -48,9 +51,9 @@ func binarySearch(ss []int, x, s, e int) int {
 	if x == ss[pivot] {
 		return pivot
 	} else if x > ss[pivot] {
-		return binarySearch(ss, x, pivot+1, e)
+		return BinarySearch(ss, x, pivot+1, e)
 	}
-	return binarySearch(ss, x, s, pivot)
+	return BinarySearch(ss, x, s, pivot)
 }
 
 
